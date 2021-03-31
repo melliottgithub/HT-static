@@ -2,6 +2,8 @@ import React, { Fragment, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../../Input';
 import ContactContext from '../../../context/contact/context';
+import { Title } from '../../../ui/ui-title';
+import { Button } from '../../../ui/ui-button';
 
 const formElements = [
   {
@@ -71,13 +73,14 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleOnSubmit}>
-      <h2>Add Contact</h2>
+      <Title>Add Contact</Title>
       <ul>
         {formElements.map(
           ({ value, inputName, inputType, placeholder }, index) =>
             inputType !== 'radio' && (
               <li key={inputName}>
                 <Input
+                  width="100%"
                   handleOnChange={handleOnChange}
                   value={contact[index]}
                   name={inputName}
@@ -87,26 +90,28 @@ const ContactForm = () => {
               </li>
             )
         )}
-        <div>
           <h5>Job type</h5>
+        <div style={{display:'flex' , alignItems : 'center' , gap : 8}}>
           {formElements.map(
             ({ value, inputName, inputType, placeholder }, index) =>
               inputType === 'radio' && (
                 <Fragment key={placeholder}>
-                  <label>{placeholder}</label>
                   {console.log(contact.type , inputName, contact.type === inputName)}
+                  
                   <Input 
                   checked={contact.type === inputName}
                   name="type"
                   value={inputName}
                   handleOnChange={handleOnChange} type="radio" />
+                  <label>{placeholder}</label>
+               
                 </Fragment>
               )
           )}
  
         </div>
       </ul>
-      <button>Add Contact</button>
+      <Button>Add Contact</Button>
     </form>
   );
 };
