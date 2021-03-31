@@ -7,9 +7,13 @@ const ContactItem = ({ contact }) => {
   const { deleteContact } = contactContext;
   const { id, name, email, type, phone } = contact;
 
-  const handleOnClick = () => {
+  const handleOnDelete = () => {
     deleteContact(id);
   };
+  const handleOnEdit = () => {
+    // deleteContact(id);
+  };
+
   return (
     <Fragment>
       <h3>
@@ -28,8 +32,8 @@ const ContactItem = ({ contact }) => {
         )}
       </ul>
       <p>
-        <button>Edit</button>
-        <button onClick={handleOnClick}>Delete</button>
+        <button onClick={handleOnEdit}>Edit</button>
+        <button onClick={handleOnDelete}>Delete</button>
       </p>
     </Fragment>
   );
