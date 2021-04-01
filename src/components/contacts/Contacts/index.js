@@ -7,7 +7,7 @@ import { getAll } from '../../../services/contacts';
 
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
-  const { contacts } = contactContext;
+  const { contacts, filtered } = contactContext;
 
   const [fetching, setFetching] = useState(false);
   const [alert, setAlert] = useState('');
@@ -18,9 +18,9 @@ const Contacts = () => {
         setFetching(true);
         const results = await getAll();
         if (results.status) {
-          setAlert('Cannot load contacts '+ results.status);
+          setAlert('Cannot load contacts ' + results.status);
         } else {
-          contactContext.setContacts(results);          
+          contactContext.setContacts(results);
         }
         setFetching(false);
       }
@@ -28,12 +28,20 @@ const Contacts = () => {
     getData();
   }, []);
 
+  if (contacts.length === 0) {
+    return <h4>Please add a contact</h4>;
+  }
+
   return (
     <Fragment>
       <span>{alert}</span>
-      {contacts.map((contact, index) => (
-        <ContactItem key={index} contact={contact} />
-      ))}
+      {filtered !== null
+        ? filtered.map((contact) => (
+            <ContactItem key={contact.id} contact={contact} />
+          ))
+        : contacts.map((contact, index) => (
+            <ContactItem key={index} contact={contact} />
+          ))}
     </Fragment>
   );
 };

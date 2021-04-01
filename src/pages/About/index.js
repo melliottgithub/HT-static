@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import Login from '../../components/autho/login';
 
 const About = () => {
   const [result, setResult] = useState();
-
-  // useEffect(async () => {
-  //   const response = await axios('http://192.168.0.3:5000/api/interviews');
-  //   console.log(response);
-  //   setResult(response);
-  // }, []);
 
   return (
     <div>

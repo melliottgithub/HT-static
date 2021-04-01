@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 import { object } from 'prop-types';
 import ContactContext from '../../../context/contact/context';
 import { Card, CardLine, ContactName, ContactType } from './styles';
@@ -14,6 +14,7 @@ const ContactItem = ({ contact }) => {
     clearCurrent();
   };
   const handleOnEdit = () => {
+    console.log('clicked');
     setCurrent(contact);
   };
 
@@ -36,10 +37,10 @@ const ContactItem = ({ contact }) => {
           </li>
         )}
       </ul>
-      <Button width="20%" onClick={handleOnEdit}>
+      <Button width="30%" onClick={handleOnEdit}>
         Edit
       </Button>
-      <Button width="20%" onClick={handleOnDelete}>
+      <Button width="30%" onClick={handleOnDelete}>
         Delete
       </Button>
     </Card>

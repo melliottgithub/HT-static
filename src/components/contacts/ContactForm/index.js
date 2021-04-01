@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../../Input';
 import ContactContext from '../../../context/contact/context';
@@ -49,31 +49,54 @@ const formElements = [
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
+  const { addContact, current, clearCurrent, updateContact } = contactContext;
   const [contact, setContact] = useState({
     name: '',
     email: '',
     phone: '',
-    type: 'DevOps',
+    type: 'FullStack',
   });
+
+  useEffect(() => {
+    if (current !== null) {
+      setContact(current);
+    } else {
+      setContact({
+        name: '',
+        email: '',
+        phone: '',
+        type: 'FullStack',
+      });
+    }
+  }, [contactContext, current]);
   const { name, email, phone, type } = contact;
+  /* FIX */
+  const list = [name, email, phone, type];
 
   const handleOnChange = (e) =>
     setContact({ ...contact, [e.target.name]: e.target.value });
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    contactContext.addContact(contact);
-    setContact({
-      name: '',
-      email: '',
-      phone: '',
-      type: 'FullStack',
-    });
+    if (current === null) {
+      addContact(contact);
+    } else {
+      updateContact(contact);
+    }
+    handleOnClear();
+    // setContact({
+    //   name: '',
+    //   email: '',
+    //   phone: '',
+    //   type: 'FullStack',
+    // });
   };
-
+  const handleOnClear = () => {
+    clearCurrent();
+  };
   return (
     <form onSubmit={handleOnSubmit}>
-      <Title>Add Contact</Title>
+      <Title>{current ? 'Edit Contact' : 'Add Contact'}</Title>
       <ul>
         {formElements.map(
           ({ value, inputName, inputType, placeholder }, index) =>
@@ -82,7 +105,7 @@ const ContactForm = () => {
                 <Input
                   width="100%"
                   handleOnChange={handleOnChange}
-                  value={contact[index]}
+                  value={list[index]}
                   name={inputName}
                   placeholder={placeholder}
                   type={inputType}
@@ -90,7 +113,8 @@ const ContactForm = () => {
               </li>
             )
         )}
-        <h5>Job type</h5>
+        <h4>Job type</h4>
+        {/* FIX this soon */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           {formElements.map(
             ({ value, inputName, inputType, placeholder }, index) =>
@@ -109,7 +133,8 @@ const ContactForm = () => {
           )}
         </div>
       </ul>
-      <Button>Add Contact</Button>
+      <Button>{current ? 'Update contact' : 'Add contact'}</Button>
+      {current && <Button onClick={handleOnClear}>Clear</Button>}
     </form>
   );
 };
