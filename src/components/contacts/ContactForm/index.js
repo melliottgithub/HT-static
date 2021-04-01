@@ -1,9 +1,8 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import Input from '../../Input';
 import ContactContext from '../../../context/contact/context';
 import { Title } from '../../../ui/ui-title';
-import { Button } from '../../../ui/ui-button';
+import Button  from '../../../ui/ui-button';
 
 const formElements = [
   {

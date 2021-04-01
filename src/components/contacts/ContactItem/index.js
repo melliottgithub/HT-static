@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { object } from 'prop-types';
 import ContactContext from '../../../context/contact/context';
 import { Card, CardLine, ContactName, ContactType } from './styles';
-import { Button } from '../../../ui/ui-button';
+import  Button  from '../../../ui/ui-button';
 
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);

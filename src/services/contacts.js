@@ -40,7 +40,7 @@ export async function addContact(contact) {
   const resp = await fetch(`${baseUrl}/contacts`, {
     ...defaultOptions,
     method: 'POST',
-    body: JSON.stringify(contact)
+    body: JSON.stringify(contact),
   });
 
   return resp.json();
@@ -50,7 +50,7 @@ export async function updateContact(contact) {
   const resp = await fetch(`${baseUrl}/contacts`, {
     ...defaultOptions,
     method: 'PUT',
-    body: JSON.stringify(contact)
+    body: JSON.stringify(contact),
   });
 
   return resp.json();
@@ -59,17 +59,18 @@ export async function updateContact(contact) {
 export async function removeContact(_id) {
   const resp = await fetch(`${baseUrl}/contacts/${_id}`, {
     ...defaultOptions,
-    method: 'DELETE'
+    method: 'DELETE',
   });
 
   return resp.json();
 }
 
-
-export default {
+const contacts = {
   login,
   getAll,
   addContact,
   updateContact,
-  removeContact
+  removeContact,
 };
+
+export default contacts;

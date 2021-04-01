@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import About from './pages/About';
 import ContactState from './context/contact/state';
 import Home from './pages/Home';
 import Navbar from './components/layout/Navbar';

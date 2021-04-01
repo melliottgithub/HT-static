@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Contacts from '../../components/contacts/Contacts';
 import ContactForm from '../../components/contacts/ContactForm';
 import { AppWrapper, ContactFormWrapper, ContactsWrapper } from './styles';

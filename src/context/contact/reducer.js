@@ -1,4 +1,3 @@
-import { ContactName } from '../../components/contacts/ContactItem/styles';
 import {
   ADD_CONTACT,
   DELETE_CONTACT,
@@ -6,8 +5,8 @@ import {
   CLEAR_CURRENT,
   FILTER_CONTACTS,
   CLEAR_FILTER,
-  REMOVE_ALERT,
-  SET_ALERT,
+  // REMOVE_ALERT,
+  // SET_ALERT,
   UPDATE_CONTACT,
   SET_CONTACTS,
 } from '../types';

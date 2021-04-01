@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import Input from '../../Input';
 import { login } from '../../../services/contacts';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { LoginWrapper } from './styles';
 import { Title } from '../../../ui/ui-title';
-import { Button } from '../../../ui/ui-button';
+import  Button from '../../../ui/ui-button';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });

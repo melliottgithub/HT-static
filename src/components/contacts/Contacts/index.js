@@ -1,7 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import ContactContext from '../../../context/contact/context';
-import ContactState from '../../../context/contact/state';
 import ContactItem from '../ContactItem';
 import { getAll } from '../../../services/contacts';
 

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
-import { colorPrimary } from '../ui-colors';
+import { colorPrimary, colorSecondary } from '../ui-colors';
 
-const Button = styled.button`
-    background: ${colorPrimary};
+export const Button = styled.button`
+    position: relative;
+	appearance: none;
+	background: ${colorPrimary};
+	padding: 1em 2em;
     color: white;
     padding:10px;
     border:0;
@@ -10,6 +13,27 @@ const Button = styled.button`
     cursor:pointer;
     width: ${props => props.width || '100%'};
     margin-right:5px;
-`
+    overflow:hidden;
 
-export default Button;
+    &::before {
+		content: "";
+		position: absolute;
+		left: ${props => props.x}px;
+		top:  ${props => props.y}px;
+		width: 0;
+		height: 0;
+		background: radial-gradient(circle closest-side, ${colorSecondary}, transparent);
+		transform: translate(-50%, -50%);
+		transition: width 0.2s ease, height 0.2s ease;
+	}
+
+	&:hover::before {
+        width: 400px;
+		height: 400px;
+	}
+`;
+
+export const StyledButtonLabel = styled.span`
+    position: relative;
+    pointer-events: none;
+`;

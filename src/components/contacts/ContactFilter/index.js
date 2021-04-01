@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import ContactContext from '../../../context/contact/context';
 
 const ContactFilter = () => {
