@@ -6,6 +6,8 @@ import ContactState from './context/contact/state';
 import Home from './pages/Home';
 import Navbar from './components/layout/Navbar';
 import GlobalStyle from './globalStyles';
+import Login from './components/autho/login';
+import { isAuthenticated } from './services/contacts';
 
 const App = () => {
   return (
@@ -14,10 +16,14 @@ const App = () => {
       <ContactState>
         <Router>
           <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-          </Switch>
+          {!isAuthenticated() ? (
+            <Login />
+          ) : (
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+            </Switch>
+          )}
         </Router>
       </ContactState>
     </Fragment>

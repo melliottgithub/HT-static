@@ -90,25 +90,23 @@ const ContactForm = () => {
               </li>
             )
         )}
-          <h5>Job type</h5>
-        <div style={{display:'flex' , alignItems : 'center' , gap : 8}}>
+        <h5>Job type</h5>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           {formElements.map(
             ({ value, inputName, inputType, placeholder }, index) =>
               inputType === 'radio' && (
-                <Fragment key={placeholder}>
-                  {console.log(contact.type , inputName, contact.type === inputName)}
-                  
-                  <Input 
-                  checked={contact.type === inputName}
-                  name="type"
-                  value={inputName}
-                  handleOnChange={handleOnChange} type="radio" />
+                <Fragment key={index}>
+                  <Input
+                    checked={contact.type === inputName}
+                    name="type"
+                    value={inputName}
+                    handleOnChange={handleOnChange}
+                    type="radio"
+                  />
                   <label>{placeholder}</label>
-               
                 </Fragment>
               )
           )}
- 
         </div>
       </ul>
       <Button>Add Contact</Button>

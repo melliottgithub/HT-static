@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyledInput } from './styles';
 
 const Input = ({ type,width, placeholder, name, value, handleOnChange }) => {
+  
   return (
     <StyledInput
       width={width}

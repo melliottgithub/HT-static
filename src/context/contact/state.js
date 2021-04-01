@@ -12,6 +12,7 @@ import {
   SET_ALERT,
   SET_CURRENT,
   UPDATE_CONTACT,
+  SET_CONTACTS
 } from '../types';
 
 const ContactState = ({ children }) => {
@@ -67,6 +68,9 @@ const ContactState = ({ children }) => {
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
   };
+  const setContacts = (contacts) => {
+    dispatch({ type: SET_CONTACTS, payload: contacts });
+  };
   //filter contact
   //clear filter
 
@@ -79,6 +83,7 @@ const ContactState = ({ children }) => {
         current: state.current,
         setCurrent,
         clearCurrent,
+        setContacts
       }}
     >
       {children}
