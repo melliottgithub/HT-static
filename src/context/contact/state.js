@@ -3,6 +3,8 @@ import React, { useReducer } from 'react';
 import Context from './context';
 import Reducer from './reducer';
 
+import Contacts from '../../services/contacts';
+
 import {
   ADD_CONTACT,
   CLEAR_CURRENT,
@@ -18,36 +20,7 @@ import {
 
 const ContactState = ({ children }) => {
   const initialState = {
-    contacts: [
-      {
-        id: 1,
-        email: 'test1@test.com',
-        name: 'mike1 elliott',
-        phone: '1111111111',
-        type: 'personal',
-      },
-      {
-        id: 2,
-        email: 'test2@test.com',
-        name: 'mike2 elliott',
-        phone: '1111111111',
-        type: 'personal',
-      },
-      {
-        id: 3,
-        email: 'test3@test.com',
-        name: 'mike3 elliott',
-        phone: '1111111111',
-        type: 'personal',
-      },
-      {
-        id: 4,
-        email: 'test4@test.com',
-        name: 'mike4 elliott',
-        phone: '1111111111',
-        type: 'personal',
-      },
-    ],
+    contacts: [],
     current: null,
     filtered: null,
   };
@@ -55,12 +28,15 @@ const ContactState = ({ children }) => {
 
   //add contact
   const addContact = (contact) => {
-    contact.id = Math.random();
-    dispatch({ type: ADD_CONTACT, payload: contact });
+    Contacts.addContact(contact)
+      .then(added => dispatch({ type: ADD_CONTACT, payload: added }))
+      .catch(err => console.log(err));
   };
   //delete contact
-  const deleteContact = (id) => {
-    dispatch({ type: DELETE_CONTACT, payload: id });
+  const deleteContact = (_id) => {
+    Contacts.removeContact(_id)
+      .then(added => dispatch({ type: DELETE_CONTACT, payload: _id }))
+      .catch(err => console.log(err));
   };
   //set current contact
   const setCurrent = (contact) => {
@@ -75,7 +51,9 @@ const ContactState = ({ children }) => {
   };
   //update contact
   const updateContact = (contact) => {
-    dispatch({ type: UPDATE_CONTACT, payload: contact });
+    Contacts.updateContact(contact)
+      .then(updated => dispatch({ type: UPDATE_CONTACT, payload: updated }))
+      .catch(err => console.log(err));
   };
   //filter contact
   const filteredContacts = (text) => {

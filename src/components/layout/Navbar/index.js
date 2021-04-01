@@ -5,10 +5,6 @@ import { Nav, NavMenu, Title } from './styles';
 
 const navList = [
   {
-    text: 'About',
-    link: '/about',
-  },
-  {
     text: 'Home',
     link: '/',
   },
@@ -16,14 +12,18 @@ const navList = [
     text: 'Login',
     link: '/login',
   },
-  {
-    text: 'Register',
-    link: '/register',
-  },
-  {
-    text: 'Tracker',
-    link: '/tracker',
-  },
+  // {
+  //   text: 'Login',
+  //   link: '/login',
+  // },
+  // {
+  //   text: 'Register',
+  //   link: '/register',
+  // },
+  // {
+  //   text: 'Tracker',
+  //   link: '/tracker',
+  // },
 ];
 
 const Navbar = ({ title, icon }) => {

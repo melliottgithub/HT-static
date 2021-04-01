@@ -7,10 +7,10 @@ import { Button } from '../../../ui/ui-button';
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
-  const { id, name, email, type, phone } = contact;
+  const { _id, name, email, type, phone } = contact;
 
   const handleOnDelete = () => {
-    deleteContact(id);
+    deleteContact(_id);
     clearCurrent();
   };
   const handleOnEdit = () => {

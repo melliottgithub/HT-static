@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledInput } from './styles';
 
-const Input = ({ type,width, placeholder, name, value, handleOnChange }) => {
-  
+//const Input = ({ type,width, placeholder, name, value, checked, handleOnChange }) => {
+  const Input = (props) => {
   return (
-    <StyledInput
+    <StyledInput {...props}
+    /*
       width={width}
       value={value}
       name={name}
       type={type}
       placeholder={placeholder}
       onChange={handleOnChange}
+      */
     />
   );
 };

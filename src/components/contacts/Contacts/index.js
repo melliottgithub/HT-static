@@ -32,16 +32,14 @@ const Contacts = () => {
     return <h4>Please add a contact</h4>;
   }
 
+  const list = filtered !== null ? filtered : contacts;
   return (
     <Fragment>
       <span>{alert}</span>
-      {filtered !== null
-        ? filtered.map((contact) => (
-            <ContactItem key={contact.id} contact={contact} />
-          ))
-        : contacts.map((contact, index) => (
-            <ContactItem key={index} contact={contact} />
-          ))}
+      {list &&
+        list.map((contact, index) => (
+          <ContactItem key={contact._id || index} contact={contact} />
+        ))}
     </Fragment>
   );
 };

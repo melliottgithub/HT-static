@@ -104,7 +104,7 @@ const ContactForm = () => {
               <li key={inputName}>
                 <Input
                   width="100%"
-                  handleOnChange={handleOnChange}
+                  onChange={handleOnChange}
                   value={list[index]}
                   name={inputName}
                   placeholder={placeholder}
@@ -121,10 +121,10 @@ const ContactForm = () => {
               inputType === 'radio' && (
                 <Fragment key={index}>
                   <Input
-                    checked={contact.type === inputName}
+                    checked={contact.type === placeholder}
                     name="type"
                     value={inputName}
-                    handleOnChange={handleOnChange}
+                    onChange={handleOnChange}
                     type="radio"
                   />
                   <label>{placeholder}</label>
