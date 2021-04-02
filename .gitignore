@@ -6,6 +6,7 @@
 .pnp.js
 *.pem
 *.tar
+.env*
 # testing
 /coverage
 
