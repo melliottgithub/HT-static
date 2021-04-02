@@ -15,7 +15,6 @@ const Navbar = ({ title, icon }) => {
   const history = useHistory();
 
   const Logout = () => {
-    console.log('click');
     localStorage.clear();
     history.push('/login');
   };
@@ -50,7 +49,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'Contact / Interview / Tracker',
+  title: 'Hacker Tracker',
   icon: 'fal fa-address-card',
 };
 

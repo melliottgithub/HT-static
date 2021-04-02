@@ -14,7 +14,6 @@ const ContactItem = ({ contact }) => {
     clearCurrent();
   };
   const handleOnEdit = () => {
-    console.log('clicked');
     setCurrent(contact);
   };
 

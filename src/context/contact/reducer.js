@@ -42,7 +42,6 @@ export default (state, action) => {
         contacts: [...(action.payload || [])],
       };
     case UPDATE_CONTACT:
-      console.log(action.payload);
       return {
         ...state,
         contacts: state.contacts.map((contact) =>

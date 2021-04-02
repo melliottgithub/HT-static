@@ -31,9 +31,9 @@ const Login = () => {
       <LoginWrapper>
         <Title>Login</Title>
         <label>Email</label>
-        <Input name="email" onChange={handleOnChange} />
+        <Input type="text" name="email" onChange={handleOnChange} />
         <label>Password</label>
-        <Input name="password" onChange={handleOnChange} />
+        <Input type="password" name="password" onChange={handleOnChange} />
         <Button>Login</Button>
       </LoginWrapper>
     </form>

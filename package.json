@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish": "scp -i ../server.pem ./build/* 172.31.32.80:/home/webapp/"
+    "upload": "tar cvf build.tar build/* & aws s3 cp build.tar s3://ht-webapp/build.tar"
   },
   "eslintConfig": {
     "extends": [
