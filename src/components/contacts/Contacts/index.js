@@ -5,7 +5,7 @@ import { getAll } from '../../../services/contacts';
 
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
-  const { contacts, filtered } = contactContext;
+  const { contacts, filtered, setContacts } = contactContext;
 
   const [fetching, setFetching] = useState(false);
   const [alert, setAlert] = useState('');
@@ -18,12 +18,13 @@ const Contacts = () => {
         if (results.status) {
           setAlert('Cannot load contacts ' + results.status);
         } else {
-          contactContext.setContacts(results);
+          setContacts(results);
         }
         setFetching(false);
       }
     }
     getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (contacts.length === 0) {

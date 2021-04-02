@@ -1,32 +1,25 @@
 import React from 'react';
 import { string } from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Nav, NavMenu, Title } from './styles';
+import { isAuthenticated } from '../../../services/contacts';
 
 const navList = [
   {
-    text: 'Home',
+    text: 'Contact',
     link: '/',
   },
-  {
-    text: 'Login',
-    link: '/login',
-  },
-  // {
-  //   text: 'Login',
-  //   link: '/login',
-  // },
-  // {
-  //   text: 'Register',
-  //   link: '/register',
-  // },
-  // {
-  //   text: 'Tracker',
-  //   link: '/tracker',
-  // },
 ];
 
 const Navbar = ({ title, icon }) => {
+  const history = useHistory();
+
+  const Logout = () => {
+    console.log('click');
+    localStorage.clear();
+    history.push('/login');
+  };
+
   return (
     <Nav>
       <Title>
@@ -34,12 +27,18 @@ const Navbar = ({ title, icon }) => {
         {title}
       </Title>
       <NavMenu>
-        {navList &&
-          navList.map(({ text, link }) => (
-            <li key={link}>
-              <Link to={link}>{text}</Link>
+        {isAuthenticated() ? (
+          <>
+            <li>
+              <Link to={'/'}>Contact</Link>
             </li>
-          ))}
+            <li onClick={Logout}>Logout</li>
+          </>
+        ) : (
+          <li>
+            <Link to={'/login'}>Login</Link>
+          </li>
+        )}
       </NavMenu>
     </Nav>
   );

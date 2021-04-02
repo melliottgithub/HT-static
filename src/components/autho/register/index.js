@@ -1,11 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import Input from '../../Input';
+import { login } from '../../../services/contacts';
+// import { Redirect } from 'react-router-dom';
+import { LoginWrapper } from './styles';
+import { Title } from '../../../ui/ui-title';
+import Button from '../../../ui/ui-button';
 
-const Register = (props) => {
+const Register = () => {
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+
+  const handleOnChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    return login(credentials).then(() => {
+      window.location.href = '/';
+      // return <Redirect push to="/" />;
+    });
+  };
   return (
-    <div>
-      <form onSubmit={handleOnSubmit}>
-        <h1>Register</h1>
+    <form onSubmit={handleOnSubmit}>
+      <LoginWrapper>
+        <Title>Register</Title>
         <label>Name</label>
         <Input name="text" handleOnChange={handleOnChange} />
         <label>Email</label>
@@ -14,9 +31,9 @@ const Register = (props) => {
         <Input name="password" handleOnChange={handleOnChange} />
         <label>Confirm Password</label>
         <Input name="password" handleOnChange={handleOnChange} />
-        <button>Register</button>
-      </form>
-    </div>
+        <Button>Register</Button>
+      </LoginWrapper>
+    </form>
   );
 };
 

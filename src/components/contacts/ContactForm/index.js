@@ -3,6 +3,7 @@ import Input from '../../Input';
 import ContactContext from '../../../context/contact/context';
 import { Title } from '../../../ui/ui-title';
 import Button  from '../../../ui/ui-button';
+import { RadioWrapper } from './styles';
 
 const formElements = [
   {
@@ -68,9 +69,6 @@ const ContactForm = () => {
       });
     }
   }, [contactContext, current]);
-  const { name, email, phone, type } = contact;
-  /* FIX */
-  const list = [name, email, phone, type];
 
   const handleOnChange = (e) =>
     setContact({ ...contact, [e.target.name]: e.target.value });
@@ -83,12 +81,6 @@ const ContactForm = () => {
       updateContact(contact);
     }
     handleOnClear();
-    // setContact({
-    //   name: '',
-    //   email: '',
-    //   phone: '',
-    //   type: 'FullStack',
-    // });
   };
   const handleOnClear = () => {
     clearCurrent();
@@ -104,7 +96,7 @@ const ContactForm = () => {
                 <Input
                   width="100%"
                   onChange={handleOnChange}
-                  value={list[index]}
+                  value={contact[inputName]}
                   name={inputName}
                   placeholder={placeholder}
                   type={inputType}
@@ -113,8 +105,7 @@ const ContactForm = () => {
             )
         )}
         <h4>Job type</h4>
-        {/* FIX this soon */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <RadioWrapper>
           {formElements.map(
             ({ value, inputName, inputType, placeholder }, index) =>
               inputType === 'radio' && (
@@ -130,7 +121,7 @@ const ContactForm = () => {
                 </Fragment>
               )
           )}
-        </div>
+        </RadioWrapper>
       </ul>
       <Button>{current ? 'Update contact' : 'Add contact'}</Button>
       {current && <Button onClick={handleOnClear}>Clear</Button>}

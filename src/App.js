@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Navbar from './components/layout/Navbar';
 import GlobalStyle from './globalStyles';
 import Login from './components/autho/login';
+import Register from './components/autho/register';
 import { isAuthenticated } from './services/contacts';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
             </Switch>
           )}
         </Router>

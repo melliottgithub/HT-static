@@ -22,9 +22,13 @@ export async function login(credentials) {
   });
 
   const json = await resp.json();
-  defaultOptions.headers['Authorization'] = json.token;
-  localStorage.setItem('jwt', json.token);
-  return json;
+  console.log('login json', json);
+  if (resp.status == 200) {
+    defaultOptions.headers['Authorization'] = json.token;
+    localStorage.setItem('jwt', json.token);
+    return json
+  } 
+  return null;
 }
 
 export async function getAll() {

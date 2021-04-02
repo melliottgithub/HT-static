@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import ContactContext from '../../../context/contact/context';
+import { StyledInput } from './styles';
 
 const ContactFilter = () => {
   const contactContext = useContext(ContactContext);
@@ -22,12 +23,12 @@ const ContactFilter = () => {
   };
 
   return (
-    <input
+    <StyledInput
       ref={text}
       type="text"
       placeholder="Filter Contacts..."
       onChange={handleOnChange}
-    ></input>
+    ></StyledInput>
   );
 };
 

@@ -8,28 +8,36 @@ import  Button from '../../../ui/ui-button';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [message, setMessage] = useState();
 
   const handleOnChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    return login(credentials).then(() => {
-      window.location.href = '/';
-      // return <Redirect push to="/" />;
+    return login(credentials).then((auth) => {
+      if (auth) {
+        setMessage('');
+        window.location.href = '/';
+      } else {
+        setMessage('Invalid login');
+      }
     });
   };
   return (
+    <>
+    {message ? <span>{message}</span> : null}
     <form onSubmit={handleOnSubmit}>
       <LoginWrapper>
         <Title>Login</Title>
         <label>Email</label>
-        <Input name="email" handleOnChange={handleOnChange} />
+        <Input name="email" onChange={handleOnChange} />
         <label>Password</label>
-        <Input name="password" handleOnChange={handleOnChange} />
+        <Input name="password" onChange={handleOnChange} />
         <Button>Login</Button>
       </LoginWrapper>
     </form>
+    </>
   );
 };
 
