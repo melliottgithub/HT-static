@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '../../Input';
 import { login } from '../../../services/contacts';
 // import { Redirect } from 'react-router-dom';
-import { LoginWrapper } from './styles';
+import { Alert, LoginWrapper } from './styles';
 import { Title } from '../../../ui/ui-title';
 import  Button from '../../../ui/ui-button';
 
@@ -26,7 +26,7 @@ const Login = () => {
   };
   return (
     <>
-    {message ? <span>{message}</span> : null}
+    <Alert>{message ? <span>{message}</span> : null}</Alert>
     <form onSubmit={handleOnSubmit}>
       <LoginWrapper>
         <Title>Login</Title>
