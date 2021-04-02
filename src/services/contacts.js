@@ -14,6 +14,30 @@ export function isAuthenticated() {
   // check JWT expiration
   return defaultOptions.headers['Authorization'] !== '';
 }
+
+export async function register(data) {
+  try{
+
+  const resp = await fetch(`${baseUrl}/users`, {
+    ...defaultOptions,
+    method: 'POST',
+    body: JSON.stringify(data),
+   });
+   const json = await resp.json();
+   if (resp.status === 200) {
+      defaultOptions.headers['Authorization'] = json.token;
+      localStorage.setItem('jwt', json.token);
+      return json;
+   } else {
+     console.log(json);
+     throw new Error('error register');
+   }
+  }catch(err){
+    console.log(err);
+  }
+
+  }
+
 export async function login(credentials) {
   const resp = await fetch(`${baseUrl}/auth`, {
     ...defaultOptions,
@@ -69,6 +93,7 @@ export async function removeContact(_id) {
 }
 
 const contacts = {
+  register,
   login,
   getAll,
   addContact,
