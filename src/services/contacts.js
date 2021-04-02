@@ -16,6 +16,8 @@ export function isAuthenticated() {
 }
 
 export async function register(data) {
+  try{
+
   const resp = await fetch(`${baseUrl}/users`, {
     ...defaultOptions,
     method: 'POST',
@@ -23,11 +25,17 @@ export async function register(data) {
    });
    const json = await resp.json();
    if (resp.status === 200) {
-    return json;
+      defaultOptions.headers['Authorization'] = json.token;
+      localStorage.setItem('jwt', json.token);
+      return json;
    } else {
      console.log(json);
      throw new Error('error register');
    }
+  }catch(err){
+    console.log(err);
+  }
+
   }
 
 export async function login(credentials) {

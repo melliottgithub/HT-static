@@ -13,6 +13,7 @@ export const Button = styled.button`
     cursor:pointer;
     width: ${props => props.width || '100%'};
     margin-right:5px;
+    margin-bottom:5px;
     overflow:hidden;
 
     &::before {

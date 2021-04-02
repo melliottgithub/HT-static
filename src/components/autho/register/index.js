@@ -5,9 +5,11 @@ import { register } from '../../../services/contacts';
 import { LoginWrapper } from './styles';
 import { Title } from '../../../ui/ui-title';
 import Button from '../../../ui/ui-button';
+// import { useHistory } from 'react-router';
 
 const Register = () => {
   const [userData, setUserData] = useState({ email: '', password: '' });
+  // const history = useHistory();
 
   const handleOnChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -15,8 +17,11 @@ const Register = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     return register(userData).then((user) => {
+      if(user){
       console.log(user);
-      window.location.href = '/';
+      // history.push("/contacts")
+      window.location.href = "/contacts";
+    }
     });
   };
   return (

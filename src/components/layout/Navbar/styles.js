@@ -16,10 +16,14 @@ export const NavMenu = styled.ul`
     list-style: none;
     gap: 26px;
     text-transform: uppercase;
+    flex:1;
+    justify-content: space-between;
+
     a {
         text-decoration : none;
         color:  white;
         font-weight: bold;
+        margin-right: 5px;
     }
 `;
 
