@@ -7,7 +7,7 @@ import Button from '../../../ui/ui-button';
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
-  const { _id, name, email, type, phone } = contact;
+  const { _id, name, email, type, phone , company } = contact;
 
   const handleOnDelete = () => {
     deleteContact(_id);
@@ -33,6 +33,11 @@ const ContactItem = ({ contact }) => {
         {phone && (
           <li>
             <i className="fas fa-mobile-android-alt" /> {phone}
+          </li>
+        )}
+         {company && (
+          <li>
+            <i className="fal fa-building" /> {company}
           </li>
         )}
       </ul>

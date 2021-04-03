@@ -22,6 +22,11 @@ const formElements = [
     placeholder: 'Phone number',
   },
   {
+    inputType: 'text',
+    inputName: 'company',
+    placeholder: 'Company',
+  },
+  {
     inputType: 'radio',
     inputName: 'FullStack',
     placeholder: 'FullStack',
@@ -54,6 +59,7 @@ const ContactForm = () => {
     name: '',
     email: '',
     phone: '',
+    company : '',
     type: 'FullStack',
   });
 
@@ -65,6 +71,7 @@ const ContactForm = () => {
         name: '',
         email: '',
         phone: '',
+        company : '',
         type: 'FullStack',
       });
     }
