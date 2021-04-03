@@ -34,3 +34,9 @@ export const Title = styled.h1`
     align-items:center;
     margin-left:10px;
 `
+
+
+export const FlexWrapper = styled.div`
+    display:flex;
+    gap: 20px;
+`

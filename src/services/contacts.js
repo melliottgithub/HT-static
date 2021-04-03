@@ -29,7 +29,6 @@ export async function register(data) {
       localStorage.setItem('jwt', json.token);
       return json;
    } else {
-     console.log(json);
      throw new Error('error register');
    }
   }catch(err){

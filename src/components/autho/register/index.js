@@ -18,7 +18,6 @@ const Register = () => {
     e.preventDefault();
     return register(userData).then((user) => {
       if(user){
-      console.log(user);
       // history.push("/contacts")
       window.location.href = "/contacts";
     }

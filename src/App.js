@@ -8,6 +8,7 @@ import GlobalStyle from './globalStyles';
 import Login from './components/autho/login';
 import Register from './components/autho/register';
 import { isAuthenticated } from './services/contacts';
+import Interviews from './pages/Interviews';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           ) : (
             <Switch>
               <Route exact path="/contacts" component={Home} />
+              <Route exact path="/interviews" component={Interviews} />
               <Route exact path="/login" component={Login} />
               </Switch>
           )}      
