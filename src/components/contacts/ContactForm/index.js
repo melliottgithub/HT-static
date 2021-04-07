@@ -107,6 +107,7 @@ const ContactForm = () => {
                   name={inputName}
                   placeholder={placeholder}
                   type={inputType}
+                  required
                 />
               </li>
             )

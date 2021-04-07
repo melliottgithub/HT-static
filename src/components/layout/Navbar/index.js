@@ -18,7 +18,7 @@ const Navbar = ({ title, icon }) => {
     <Nav>
       <Title>
         <i className={icon} />
-        {title}
+        <span>{title}</span>
       </Title>
       <NavMenu>
         {isAuthenticated() ? (
@@ -27,9 +27,9 @@ const Navbar = ({ title, icon }) => {
               <li>
                 <Link to={'/contacts'}>Contacts</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to={'/interviews'}>Interviews</Link>
-              </li>
+              </li> */}
             </FlexWrapper>
             <li onClick={Logout}>
               <a href="/#">Logout</a>

@@ -13,7 +13,7 @@ const interviewsData = [
     firstContact: '01/01/2021',
     company: 'facebook',
     jobName: 'devops',
-    stage1: null,
+    stage1: true,
     stage2: true,
     stage3: false,
     offered: true,
@@ -24,7 +24,7 @@ const interviewsData = [
     firstContact: '04/04/2021',
     company: 'amazon',
     jobName: 'frontend',
-    stage1: null,
+    stage1: true,
     stage2: true,
     stage3: false,
     offered: true,
@@ -99,6 +99,12 @@ const Interviews = (props) => {
     setInterviews(newInterviews);
   };
 
+  const calculatePercentage = key => { 
+    const total = interviews.length;
+    const countInterviews = interviews.filter((interview) => interview[key]).length;
+    return ( countInterviews / total * 100).toFixed(1);
+  }
+
   const renderTD = (el) => {
     return (
       <tr key={el.id}>
@@ -151,6 +157,17 @@ const Interviews = (props) => {
           </tr>
         </InterviewsTHead>
         <tbody>{interviews.map(renderTD)}</tbody>
+        <tr>
+            <StyledTH></StyledTH>
+            <StyledTH>{interviews.length}</StyledTH>
+            <StyledTH>{interviews.length}</StyledTH>
+            <StyledTH>{calculatePercentage('stage1')}%</StyledTH>
+            <StyledTH>{calculatePercentage('stage2')}%</StyledTH>
+            <StyledTH>{calculatePercentage('stage3')}%</StyledTH>
+            <StyledTH>{calculatePercentage('offered')}%</StyledTH>
+            <StyledTH>{calculatePercentage('job')}%</StyledTH>
+            <StyledTH></StyledTH>
+          </tr>
       </InterviewsTable>
     </InterviewsContainer>
   );
