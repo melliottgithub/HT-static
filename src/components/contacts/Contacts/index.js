@@ -32,11 +32,16 @@ const Contacts = () => {
   }
 
   const list = filtered !== null ? filtered : contacts;
+
+  if (filtered && list.length === 0) {
+    return <h4>We couldn't find any contacts</h4>;
+  }
+
   return (
     <Fragment>
       <span>{alert}</span>
       {list &&
-        list.map((contact, index) => (
+        list.map((contact, index) => index < 5 && (
           <ContactItem key={contact._id || index} contact={contact} />
         ))}
     </Fragment>

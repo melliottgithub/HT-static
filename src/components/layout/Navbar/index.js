@@ -1,34 +1,39 @@
 import React from 'react';
 import { string } from 'prop-types';
-import { Link, /* useHistory */ } from 'react-router-dom';
-import { Nav, NavMenu, Title } from './styles';
+import { Link /* useHistory */ } from 'react-router-dom';
+import { FlexWrapper, Nav, NavMenu, Title } from './styles';
 import { isAuthenticated } from '../../../services/contacts';
 
 const Navbar = ({ title, icon }) => {
   // const history = useHistory();
 
   const Logout = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     localStorage.clear();
     // history.push('/login');
-    window.location.href = "/login";
+    window.location.href = '/login';
   };
 
   return (
     <Nav>
       <Title>
         <i className={icon} />
-        {title}
+        <span>{title}</span>
       </Title>
       <NavMenu>
         {isAuthenticated() ? (
           <>
-            <li>
-              <Link to={'/contacts'}>Contacts</Link>
-            </li>
+            <FlexWrapper>
+              <li>
+                <Link to={'/contacts'}>Contacts</Link>
+              </li>
+              {/* <li>
+                <Link to={'/interviews'}>Interviews</Link>
+              </li> */}
+            </FlexWrapper>
             <li onClick={Logout}>
-              <a href="/#">Logout</a> 
-              <i class="fal fa-sign-out"></i>
+              <a href="/#">Logout</a>
+              <i className="fal fa-sign-out"></i>
             </li>
           </>
         ) : (

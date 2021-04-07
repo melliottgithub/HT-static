@@ -33,4 +33,18 @@ export const Title = styled.h1`
     gap: 6px;
     align-items:center;
     margin-left:10px;
+    span{
+        display: none;
+    }
+    @media (min-width: 760px) {
+    span{
+        display: block;
+    }
+  }
+`
+
+
+export const FlexWrapper = styled.div`
+    display:flex;
+    gap: 20px;
 `
