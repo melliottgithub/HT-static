@@ -52,7 +52,6 @@ export default (state, action) => {
       return {
         ...state,
         filtered: state.contacts.filter((contact) => {
-          console.log(action.payload , '--')
           const regex = new RegExp(`${action.payload}`, `gi`);
           return contact.name.match(regex) || contact.email.match(regex) || contact.company.match(regex);
         }),
