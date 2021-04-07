@@ -21,7 +21,6 @@ const ContactItem = ({ contact }) => {
     <Card>
       <CardLine>
         <ContactName>{name}</ContactName>
-        <ContactName>{company}</ContactName>
         <ContactType>{type}</ContactType>
       </CardLine>
 

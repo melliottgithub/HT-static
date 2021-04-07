@@ -49,11 +49,12 @@ export default (state, action) => {
         ),
       };
     case FILTER_CONTACTS:
+      const regex = new RegExp(`${action.payload}`, `gi`);
+      const match = (str) => typeof str === 'string' && str.match(regex);
       return {
         ...state,
         filtered: state.contacts.filter((contact) => {
-          const regex = new RegExp(`${action.payload}`, `gi`);
-          return contact.name.match(regex) || contact.email.match(regex) || contact.company.match(regex);
+          return match(contact.name) || match(contact.email) || match(contact.company);
         }),
       };
     case CLEAR_FILTER:
